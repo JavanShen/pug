@@ -45,6 +45,12 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "rules": {}
   },
   "browserslist": [
