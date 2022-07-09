@@ -20,7 +20,7 @@ module.exports = {
     // 末尾不需要逗号
     trailingComma: 'none',
     // jsx 标签的反尖括号需要换行
-    jsxBracketSameLine: false,
+    bracketSameLine: false,
     // 每个文件格式化的范围是文件的全部内容
     rangeStart: 0,
     rangeEnd: Infinity,
