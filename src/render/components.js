@@ -1,19 +1,20 @@
-import { NForm, NInput, NButton, NRadioGroup, NRadio } from 'naive-ui'
+import { NForm, NInput, NButton, NRadioGroup, NRadio, NSwitch } from 'naive-ui'
 
 const components = {
     "nform": NForm,
     "ninput": NInput,
     "nbutton": NButton,
     "nradiogroup": NRadioGroup,
-    "nradio": NRadio
+    "nradio": NRadio,
+    "nswitch": NSwitch
 }
 
 export default function getComponent(key = "") {
-    key = key.replace(/-/g, '').toLowerCase(key)
+    const formatKey = key.replace(/-/g, '').toLowerCase()
 
-    const component = components[key]
+    const component = components[formatKey]
 
     if (component) return component
 
-    return components['n' + key]
+    return components['n' + formatKey]
 }
