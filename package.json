@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "npm run lint:js && npm run lint:prettier && npm run lint:style",
+    "lint": "npm run lint:prettier && npm run lint:js && npm run lint:style",
     "lint:js": "vue-cli-service lint",
     "lint:prettier": "npx prettier --write src/**/*",
     "lint:style": "npx stylelint src/**/*.css"
