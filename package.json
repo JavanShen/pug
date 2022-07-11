@@ -5,10 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "npm run lint:prettier && npm run lint:js",
-    "lint:js": "vue-cli-service lint",
-    "lint:prettier": "npx prettier --write src/**/*",
-    "lint:style": "npx stylelint src/**/*.css"
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "vue-cli-service lint --no-fix"
   },
   "dependencies": {
     "core-js": "^3.6.5",
