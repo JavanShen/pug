@@ -41,7 +41,7 @@
     "extends": [
       "plugin:vue/vue3-essential",
       "@vue/airbnb",
-      "pugin:prettier/recommended"
+      "plugin:prettier/recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
