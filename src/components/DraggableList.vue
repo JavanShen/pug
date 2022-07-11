@@ -1,11 +1,18 @@
 <template>
     <fieldset name="one">
         <legend>one</legend>
-        <draggable tag="ul" :component-data="{
-            type: 'transition-group',
-            name: 'flip-list'
-        }" v-bind="dragOptions({ group: { name: 'test', pull: 'clone', put: false } })" :list="list1" item-key="order"
-            @start="start" @end="end">
+        <draggable
+            tag="ul"
+            :component-data="{
+                type: 'transition-group',
+                name: 'flip-list'
+            }"
+            v-bind="dragOptions({ group: { name: 'test', pull: 'clone', put: false } })"
+            :list="list1"
+            item-key="order"
+            @start="start"
+            @end="end"
+        >
             <template #item="{ element }">
                 <li class="list-group-item">{{ element.name }}</li>
             </template>
@@ -13,10 +20,18 @@
     </fieldset>
     <fieldset name="two">
         <legend>two</legend>
-        <draggable tag="ul" :component-data="{
-            type: 'transition-group',
-            name: 'flip-list'
-        }" v-bind="dragOptions()" :list="list2" item-key="order" @start="start" @end="end">
+        <draggable
+            tag="ul"
+            :component-data="{
+                type: 'transition-group',
+                name: 'flip-list'
+            }"
+            v-bind="dragOptions()"
+            :list="list2"
+            item-key="order"
+            @start="start"
+            @end="end"
+        >
             <template #item="{ element }">
                 <li class="list-group-item">{{ element.name }}</li>
             </template>
@@ -25,10 +40,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import draggable from 'vuedraggable'
 
-const dragOptions = (obj) => ({
+const dragOptions = obj => ({
     animation: 200,
     group: 'test',
     disabled: false,
@@ -36,14 +51,11 @@ const dragOptions = (obj) => ({
     ...obj
 })
 
-const  generateList=(data) => {
-    return data.map((name, index) => {
-        return {
-            name,
-            order: index + 1
-        }
-    })
-}
+const generateList = data =>
+    data.map((name, index) => ({
+        name,
+        order: index + 1
+    }))
 
 const data1 = ['dog', 'cat', 'bird', 'horse', 'panda']
 const data2 = ['apple', 'banana']
@@ -52,11 +64,9 @@ const list1 = ref(generateList(data1))
 
 const list2 = ref(generateList(data2))
 
-const start = () => {
-}
+const start = () => {}
 
-const end = () => {
-}
+const end = () => {}
 </script>
 
 <style scoped>
