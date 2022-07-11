@@ -7,9 +7,7 @@ export default function JsonToComponent(obj = {}) {
 
     return {
         render() {
-            return Tag ? (
-                <Tag {...other}>{content}</Tag>
-            ) : (<div></div>)
+            return Tag ? <Tag {...other}>{content}</Tag> : <div></div>
         }
     }
 }
