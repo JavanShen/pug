@@ -5,9 +5,7 @@
         </n-layout-sider>
         <n-layout>
             <n-layout-header>颐和园路</n-layout-header>
-            <n-layout-content content-style="padding: 24px;">
-                <TestForm />
-            </n-layout-content>
+            <n-layout-content content-style="padding: 24px;"> 新北路 </n-layout-content>
         </n-layout>
     </n-layout>
 </template>
