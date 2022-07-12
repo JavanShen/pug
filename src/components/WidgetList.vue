@@ -5,7 +5,7 @@
 <script setup>
 import Preview from '@/render/preview.vue'
 
-const elements = ['input', 'button'].map(item => {
+const elements = ['input', 'button', 'switch'].map(item => {
     return {
         tag: item,
         span: 12,
@@ -16,7 +16,7 @@ const elements = ['input', 'button'].map(item => {
 const list = {
     draggable: {
         open: true,
-        source: true  
+        source: true
     },
     elements
 }
