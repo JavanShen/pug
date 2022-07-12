@@ -1,15 +1,8 @@
 <script>
 import { NForm, NGrid, NFormItemGi } from 'naive-ui'
-import Draggable from 'vuedraggable'
+import Sortable from 'sortablejs'
+import { ref, onMounted, toRefs } from 'vue'
 import JsonToComponent from './JsonToComponent'
-
-const dragOptions = (obj) => ({
-    animation: 200,
-    group: 'test',
-    disabled: false,
-    ghostClass: 'ghost',
-    ...obj
-})
 
 export default {
     name: 'Preview',
@@ -19,42 +12,37 @@ export default {
             require: true
         }
     },
-    render() {
-        const draggable = this.overview.draggable || {}
-        const elements = this.overview.elements
+    setup(props) {
+        const grid = ref(null)
 
-        const renderFormItem = (el) => {
+        const { overview } = toRefs(props)
+        const { elements } = overview.value
+
+        const renderFormItem = el => {
             const { span, label, ...another } = el
             const Child = JsonToComponent({ ...another })
             return (
-                <NFormItemGi span={span} label={label}>
+                <NFormItemGi class="form-item-gi" span={span} label={label}>
                     <Child />
                 </NFormItemGi>
             )
         }
 
-        const slot = {
-            item: ({ element }) => renderFormItem(element)
+        const initSortable = el => {
+            return Sortable.create(el, {
+                animation: 150,
+                ghostClass: 'ghost',
+                sort: false
+            })
         }
 
-        return (
+        onMounted(() => {
+            initSortable(grid.value.$el)
+        })
+
+        return () => (
             <NForm>
-                {
-                    draggable.open ?
-
-                        (<Draggable
-                            tag="n-grid"
-                            {...dragOptions(draggable.source ? { group: { name: 'test', pull: 'clone', put: false } } : {})}
-                            list={elements}
-                            item-key="tag"
-                        >
-                            {slot}
-                        </Draggable>) :
-
-                        (<NGrid>
-                            elements.map(renderFormItem)
-                        </NGrid>)
-                }
+                <NGrid ref={grid}>{elements.map(renderFormItem)}</NGrid>
             </NForm>
         )
     }
