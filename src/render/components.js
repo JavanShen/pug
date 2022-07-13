@@ -1,4 +1,5 @@
 import { NForm, NInput, NButton, NRadioGroup, NRadio, NSwitch } from 'naive-ui'
+import customComponets from './components/index'
 
 const components = {
     nform: NForm,
@@ -6,7 +7,8 @@ const components = {
     nbutton: NButton,
     nradiogroup: NRadioGroup,
     nradio: NRadio,
-    nswitch: NSwitch
+    nswitch: NSwitch,
+    ...customComponets
 }
 
 export default function getComponent(key = '') {
@@ -16,5 +18,5 @@ export default function getComponent(key = '') {
 
     if (component) return component
 
-    return components[`n${formatKey}`]
+    return undefined
 }
