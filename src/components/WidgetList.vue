@@ -5,18 +5,18 @@
 <script setup>
 import Preview from '@/render/preview.vue'
 
-const elements = ['input', 'button', 'switch'].map(item => {
+const elements = ['输入框', '按钮', '开关'].map(item => {
     return {
-        tag: item,
+        tag: 'ntag',
         span: 12,
-        content: 'init'
+        value: item
     }
 })
 
 const list = {
     draggable: {
-        open: true,
-        source: true
+        group: { name: 'creation', put: false, pull: 'clone' },
+        sort: false
     },
     elements
 }
