@@ -1,7 +1,7 @@
 <script>
 import { NForm, NGrid, NFormItemGi } from 'naive-ui'
-import Sortable from 'sortablejs'
 import { ref, onMounted, toRefs } from 'vue'
+import initSortable from '@/composables/initSortable'
 import JsonToComponent from './JsonToComponent'
 
 export default {
@@ -12,11 +12,12 @@ export default {
             require: true
         }
     },
-    setup(props) {
+    emits: ['sort', 'pull', 'put'],
+    setup(props, context) {
         const grid = ref(null)
 
         const { overview } = toRefs(props)
-        const { elements } = overview.value
+        const { draggable, elements } = overview.value
 
         const renderFormItem = el => {
             const { span, label, ...another } = el
@@ -28,21 +29,17 @@ export default {
             )
         }
 
-        const initSortable = el => {
-            return Sortable.create(el, {
-                animation: 150,
-                ghostClass: 'ghost',
-                sort: false
-            })
-        }
-
         onMounted(() => {
-            initSortable(grid.value.$el)
+            if (draggable) {
+                initSortable(grid.value.$el, draggable, context.emit)
+            }
         })
 
         return () => (
             <NForm>
-                <NGrid ref={grid}>{elements.map(renderFormItem)}</NGrid>
+                <NGrid style="height: 100%" ref={grid}>
+                    {elements.map(renderFormItem)}
+                </NGrid>
             </NForm>
         )
     }
