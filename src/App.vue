@@ -16,7 +16,7 @@
 
 <script setup>
 import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui'
-import WidgetList from '@/components/WidgetList.vue'
+import WidgetList from '@/components/WidgetList/index.vue'
 import WorkSpace from '@/components/WorkSpace.vue'
 
 const headerHeight = `${60}px`
