@@ -16,8 +16,11 @@ const props = defineProps({
 
 const finalConfig = computed(() => {
     return {
+        name: 'WorkSpace',
         draggable: {
-            group: 'creation'
+            group: 'creation',
+            ghostClass: 'work-space-ghost',
+            dragClass: 'work-space-drag'
         },
         ...props.config
     }
