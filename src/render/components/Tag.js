@@ -2,7 +2,7 @@ import { NTag } from 'naive-ui'
 import { toRefs } from 'vue'
 
 export default {
-    name: 'tag',
+    name: 'Tag',
     props: {
         value: {
             type: String,
