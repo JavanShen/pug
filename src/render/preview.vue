@@ -23,7 +23,7 @@ export default {
             const { span, label, ...another } = el
             const Child = JsonToComponent({ ...another })
             return (
-                <NFormItemGi class="form-item-gi" span={span} label={label}>
+                <NFormItemGi class="form-grid-item" span={span} label={label}>
                     <Child />
                 </NFormItemGi>
             )
@@ -37,7 +37,7 @@ export default {
 
         return () => (
             <NForm>
-                <NGrid style="height: 100%" ref={grid}>
+                <NGrid class={overview.value.name === 'WorkSpace' ? 'form-grid' : ''} ref={grid}>
                     {elements.map(renderFormItem)}
                 </NGrid>
             </NForm>
@@ -47,15 +47,32 @@ export default {
 </script>
 
 <style scoped>
+.form-grid::before {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.form-grid-item {
+    cursor: move;
+}
+
 .ghost {
     opacity: 0.5;
 }
 
-.flip-list-move {
-    transition: transform 0.5s;
+.work-space-ghost {
+    grid-column: span 24 / span 24 !important;
+    background-color: #41b883;
+    position: relative;
+    opacity: 0.5;
 }
 
-.list-group-item {
-    cursor: move;
+.work-space-ghost :deep(.widget) {
+    background-color: #41b883;
+    border: none;
+    color: white;
 }
 </style>
