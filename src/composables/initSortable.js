@@ -6,7 +6,7 @@ export default function initSortable(el, config, emits) {
         ghostClass: 'ghost',
         ...config,
         onAdd: evt => {
-            emits('put', evt)
+            emits('put', evt.newIndex, evt.oldIndex)
         },
         onSort: evt => {
             if (evt.form === evt.to) {

@@ -1,18 +1,13 @@
 <template>
-    <Preview class="work-space" :overview="finalConfig" />
+    <Preview class="work-space" @put="handelPut" :overview="finalConfig" />
 </template>
 
 <script setup>
 import Preview from '@/render/preview.vue'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import widgets from '@/components/WidgetList/widgets'
 
-const props = defineProps({
-    config: {
-        type: Object,
-        default: () => ({ elements: [] }),
-        require: true
-    }
-})
+const config = ref({ elements: [] })
 
 const finalConfig = computed(() => {
     return {
@@ -22,9 +17,18 @@ const finalConfig = computed(() => {
             ghostClass: 'work-space-ghost',
             dragClass: 'work-space-drag'
         },
-        ...props.config
+        ...config.value
     }
 })
+
+const handelPut = (to, from) => {
+    const widget = widgets[from]
+    config.value.elements.splice(to, 1, {
+        span: 24,
+        label: widget.name,
+        tag: `n${widget.tag}`
+    })
+}
 </script>
 
 <style scoped>
