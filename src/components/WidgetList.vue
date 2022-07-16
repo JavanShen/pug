@@ -4,12 +4,30 @@
 
 <script setup>
 import Preview from '@/render/preview.vue'
+import Widget from './Widget.vue'
 
-const elements = ['输入框', '按钮', '开关'].map(item => {
+const elements = [
+    {
+        value: '输入框',
+        icon: 'input'
+    },
+    {
+        value: '按钮',
+        icon: 'button'
+    },
+    {
+        value: '标签',
+        icon: 'tag'
+    }
+].map(item => {
     return {
-        tag: 'ntag',
-        span: 12,
-        value: item
+        tag: (
+            <Widget>
+                <svg-icon class="icon" icon-class={item.icon} />
+                {item.value}
+            </Widget>
+        ),
+        span: 12
     }
 })
 
