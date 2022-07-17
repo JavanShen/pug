@@ -20,6 +20,7 @@ const elements = widgets.map(item => {
 })
 
 const list = {
+    name: 'WidgetList',
     draggable: {
         group: { name: 'creation', put: false, pull: 'clone' },
         sort: false
