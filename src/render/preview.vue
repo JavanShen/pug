@@ -17,7 +17,7 @@ export default {
         const grid = ref(null)
 
         const { overview } = toRefs(props)
-        const { draggable, elements } = overview.value
+        const { draggable, elements, name } = overview.value
 
         const renderFormItem = el => {
             const { span, label, ...another } = el
@@ -31,7 +31,12 @@ export default {
 
         onMounted(() => {
             if (draggable) {
-                initSortable(grid.value.$el, draggable, context.emit)
+                initSortable({
+                    el: grid.value.$el,
+                    config: draggable,
+                    emits: context.emit,
+                    name
+                })
             }
         })
 
@@ -53,9 +58,15 @@ export default {
     opacity: 0;
     height: 100%;
     width: 100%;
+    z-index: 1;
 }
 
 .form-grid-item {
+    cursor: move;
+    z-index: 2;
+}
+
+.form-grid-item :deep(.n-form-item-label) {
     cursor: move;
 }
 
