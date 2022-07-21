@@ -42,6 +42,6 @@ jobs:
         # 通过前面章节定义的命令行执行代码扫描
         run: npm run lint
       # 运行自动化测试
-      # - name: Running Test
+      - name: Running Test
         # 通过前面章节定义的命令行执行自动化测试
-        # run: yarn test
+        run: npm run test:unit
