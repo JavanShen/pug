@@ -12,11 +12,5 @@ const components = {
 }
 
 export default function getComponent(key = '') {
-    const formatKey = key.replace(/-/g, '').toLowerCase()
-
-    const component = components[formatKey]
-
-    if (component) return component
-
-    return undefined
+    return components[key.replace(/-/g, '').toLowerCase()]
 }
