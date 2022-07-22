@@ -1,4 +1,3 @@
-import { isVNode } from 'vue'
 import SvgIcon from '@/icon'
 import { mount } from '@vue/test-utils'
 import customComponents from '@/render/components/index'
@@ -15,10 +14,10 @@ expect.extend({
                     pass: false
                 }
 
-            const render = obj[key].setup()()
-            if (!isVNode(render))
+            const render = obj[key].setup || obj[key].render
+            if (!render)
                 return {
-                    message: () => '组件需要返回一个虚拟dom',
+                    message: () => '值应为一个组件',
                     pass: false
                 }
         }
