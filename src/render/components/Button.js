@@ -9,8 +9,7 @@ export default {
             default: '我是一个按钮'
         },
         icon: {
-            type: String,
-            default: 'button'
+            type: String
         }
     },
     setup(props) {
@@ -20,6 +19,6 @@ export default {
             icon: () => <svg-icon iconClass={icon.value} />
         }
 
-        return () => <NButton v-slots={slot}>{value.value}</NButton>
+        return () => <NButton v-slots={icon.value && slot}>{value.value}</NButton>
     }
 }
