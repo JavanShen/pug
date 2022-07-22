@@ -1,4 +1,6 @@
 import { isVNode } from 'vue'
+import SvgIcon from '@/icon'
+import { mount } from '@vue/test-utils'
 import customComponents from '@/render/components/index'
 import getComponent from '@/render/components'
 
@@ -28,7 +30,7 @@ expect.extend({
     }
 })
 
-describe('components', () => {
+describe('组件集合', () => {
     test('自定义组件集合是否符合规范', () => {
         expect(customComponents).checkCustomComponents()
     })
@@ -37,5 +39,34 @@ describe('components', () => {
         expect(getComponent('nbutton')).toHaveProperty('setup')
         expect(getComponent('n-button')).toHaveProperty('setup')
         expect(getComponent('')).toBeUndefined()
+    })
+
+    describe('自定义按钮组件', () => {
+        const initButton = props => {
+            const options = {
+                global: {
+                    plugins: [SvgIcon]
+                }
+            }
+
+            if (props) {
+                options.props = { ...props }
+            }
+
+            return mount(getComponent('nbutton'), options)
+        }
+
+        test('未传值', () => {
+            const button = initButton()
+
+            expect(button.find('.n-button').text()).toBe('我是一个按钮')
+        })
+
+        test('传值', () => {
+            const button = initButton({ value: '测试', icon: 'button' })
+
+            expect(button.find('.n-button').text()).toBe('测试')
+            expect(button.find('svg')).toBeDefined()
+        })
     })
 })
