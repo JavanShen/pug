@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
     "sortablejs": "^1.15.0",
     "vue": "^3.0.0",
     "vuedraggable": "^4.1.0"
@@ -62,18 +63,18 @@
         }
       ],
       "vue/multi-word-component-names": 0,
-      "no-restricted-syntax": [ 
-        "error", 
-        { 
-          "selector": "ForInStatement", 
+      "no-restricted-syntax": [
+        "error",
+        {
+          "selector": "ForInStatement",
           "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
         },
-        { 
-          "selector": "LabeledStatement", 
+        {
+          "selector": "LabeledStatement",
           "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
         },
-        { 
-          "selector": "WithStatement", 
+        {
+          "selector": "WithStatement",
           "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
         }
       ]
