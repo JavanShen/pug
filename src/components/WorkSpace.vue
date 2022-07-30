@@ -4,12 +4,16 @@
 
 <script setup>
 import Preview from '@/render/preview.vue'
-import { computed, ref } from 'vue'
+import { computed, toRefs } from 'vue'
 import widgets from '@/components/WidgetList/widgets'
 
-const config = ref({
-    elements: []
+const prop = defineProps({
+    config: Object
 })
+
+const emit = defineEmits(['change'])
+
+const { config } = toRefs(prop)
 
 const finalConfig = computed(() => {
     return {
@@ -25,11 +29,7 @@ const finalConfig = computed(() => {
 
 const handelPut = (to, from) => {
     const widget = widgets[from]
-    config.value.elements.splice(to, 0, {
-        span: 24,
-        label: widget.name,
-        tag: `n${widget.tag}`
-    })
+    emit('change', to, from, widget)
 }
 </script>
 
