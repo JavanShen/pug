@@ -42,7 +42,7 @@ export default {
 
         return () => (
             <NForm>
-                <NGrid class={overview.value.name === 'WorkSpace' ? 'form-grid' : ''} ref={grid}>
+                <NGrid class={name === 'WorkSpace' ? 'form-grid' : ''} ref={grid}>
                     {elements.map(renderFormItem)}
                 </NGrid>
             </NForm>
