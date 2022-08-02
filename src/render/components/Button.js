@@ -8,16 +8,11 @@ export default {
             type: String,
             default: '我是一个按钮'
         },
-        icon: String,
         level: String,
         shape: String
     },
     setup(props) {
-        const { value, icon, level, shape } = toRefs(props)
-
-        const slot = {
-            icon: () => <svg-icon iconClass={icon.value} />
-        }
+        const { value, level, shape } = toRefs(props)
 
         const property = {}
 
@@ -28,10 +23,6 @@ export default {
             property[shape.value] = true
         }
 
-        return () => (
-            <NButton {...property} v-slots={icon.value && slot}>
-                {value.value}
-            </NButton>
-        )
+        return () => <NButton {...property}>{value.value}</NButton>
     }
 }

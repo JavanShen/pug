@@ -7,19 +7,11 @@ export default {
         value: {
             type: String,
             default: '无名'
-        },
-        icon: {
-            type: String,
-            default: 'input'
         }
     },
     setup(props) {
-        const { value, icon } = toRefs(props)
+        const { value } = toRefs(props)
 
-        const slot = {
-            icon: () => <svg-icon iconClass={icon.value} />
-        }
-
-        return () => <NTag v-slots={slot}>{value.value}</NTag>
+        return () => <NTag>{value.value}</NTag>
     }
 }
