@@ -1,5 +1,12 @@
 <template>
-    <RenderSetting v-for="(item, key) in calOp" :tag="tag" :key="key" v-model:val="calOp[key]" />
+    <RenderSetting
+        v-for="(item, key) in calOp"
+        :tag="options.tag"
+        :key="key"
+        :name="key"
+        :val="item"
+        @change="handelChange"
+    />
 </template>
 
 <script setup>
@@ -13,14 +20,19 @@ const prop = defineProps({
 const emit = defineEmits(['update:options'])
 
 const { options } = toRefs(prop)
-const { tag } = toRefs(options)
+
+const handelChange = (val, key) => {
+    options.value[key] = val
+}
 
 const calOp = computed({
     get() {
         const obj = {}
-        Object.keys(options.value).forEach(key => {
-            if (key !== 'tag') obj[key] = options.value[key]
-        })
+        if (options.value) {
+            Object.keys(options.value).forEach(key => {
+                if (key !== 'tag') obj[key] = options.value[key]
+            })
+        }
         return obj
     },
     set(val) {

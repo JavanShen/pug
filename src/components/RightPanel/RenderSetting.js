@@ -1,42 +1,40 @@
 import { toRefs, computed } from 'vue'
 import { typeMap, keyMap } from '@/options'
 import { NFormItem, NSwitch } from 'naive-ui'
-import { Radio } from './components/Radio.vue'
+import Radio from './components/Radio.vue'
 
 export default {
     name: 'RenderSetting',
     props: {
         tag: String,
-        key: String,
+        name: String,
         val: [String, Boolean, Number]
     },
-    emits: ['update:val'],
-    setup(props, context) {
-        const { tag, key, val } = toRefs(props)
+    emits: ['change'],
+    setup(props, { emit }) {
+        const { tag, name, val } = toRefs(props)
 
         const calVal = computed({
             get() {
                 return val.value
             },
             set(value) {
-                context.emit('update:val', value)
+                emit('change', value, name.value)
             }
         })
 
         const widget = (t, k, v) => {
-            if (typeof v === 'boolean') {
-                return <NSwitch v-model:value={v} />
+            if (typeof v.value === 'boolean') {
+                return <NSwitch v-model:value={v.value} />
             }
 
-            if (typeMap.radio.includes(k)) {
-                return <Radio property={`${t}-${k}`} v-model:val={v} />
+            if (typeMap.radio.includes(k.value)) {
+                return <Radio property={`${t.value}-${k.value}`} v-model:val={v.value} />
             }
 
             return null
         }
 
-        return (
-            <NFormItem label={keyMap[key.value]}>{widget(tag.value, key.value, calVal)}</NFormItem>
-        )
+        return () => <NFormItem label={keyMap[name.value]}>{widget(tag, name, calVal)}</NFormItem>
     }
 }
