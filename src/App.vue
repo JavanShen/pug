@@ -9,7 +9,7 @@
                 <WorkSpace :config="config" @change="addWidget" />
             </n-layout-content>
             <n-layout-sider class="right" content-style="padding: 24px;">
-                <RightPanel />
+                <RightPanel :componentOptions="config.elements[activeIndex]" />
             </n-layout-sider>
         </n-layout>
     </n-layout>
@@ -22,6 +22,7 @@ import WidgetList from '@/components/WidgetList/index.vue'
 import WorkSpace from '@/components/WorkSpace.vue'
 import RightPanel from '@/components/RightPanel/index.vue'
 import componentsOption from '@/options'
+import uniqueId from 'lodash/uniqueId'
 
 const headerHeight = `${60}px`
 const config = ref({
@@ -29,12 +30,18 @@ const config = ref({
     elements: []
 })
 
+const activeIndex = ref(0)
+
 const addWidget = (to, from, widget) => {
+    const tag = `n${widget.tag}`
     config.value.elements.splice(to, 0, {
+        id: uniqueId('el'),
         span: 24,
         label: widget.name,
-        tag: `n${widget.tag}`
+        tag,
+        ...componentsOption[tag]
     })
+    activeIndex.value = to
 }
 </script>
 

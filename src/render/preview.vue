@@ -13,17 +13,17 @@ export default {
         }
     },
     emits: ['sort', 'pull', 'put'],
-    setup(props, context) {
+    setup(props, { emit }) {
         const grid = ref(null)
 
         const { overview } = toRefs(props)
         const { draggable, elements, name } = overview.value
 
         const renderFormItem = el => {
-            const { span, label, ...another } = el
+            const { span, label, id, ...another } = el
             const Child = JsonToComponent({ ...another })
             return (
-                <NFormItemGi class="form-grid-item" span={span} label={label}>
+                <NFormItemGi class="form-grid-item" key={id} span={span} label={label}>
                     <Child />
                 </NFormItemGi>
             )
@@ -34,7 +34,7 @@ export default {
                 initSortable({
                     el: grid.value.$el,
                     config: draggable,
-                    emits: context.emit,
+                    emits: emit,
                     name
                 })
             }
