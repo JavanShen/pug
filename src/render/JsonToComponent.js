@@ -8,9 +8,5 @@ export default function JsonToComponent(obj = {}) {
 
     const Tag = getComponent(tag) || tag
 
-    return {
-        render() {
-            return <Tag {...other}>{content}</Tag>
-        }
-    }
+    return <Tag {...other}>{content}</Tag>
 }
