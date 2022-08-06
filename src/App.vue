@@ -34,8 +34,10 @@ const activeIndex = ref(0)
 
 const addWidget = (to, from, widget) => {
     const tag = `n${widget.tag}`
+    const uniId = uniqueId('el')
     config.value.elements.splice(to, 0, {
-        id: uniqueId('el'),
+        id: uniId,
+        propertyName: uniId,
         span: 24,
         label: widget.name,
         tag,
