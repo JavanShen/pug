@@ -19,12 +19,23 @@ export default {
         const { overview } = toRefs(props)
         const { draggable, elements, name } = overview.value
 
+        const formData = ref({})
+
         const renderFormItem = el => {
-            const { span, label, id, ...another } = el
+            const { span, label, id, propertyName, ...another } = el
+
+            formData.value[propertyName] = ref(null)
+
             const Child = JsonToComponent({ ...another })
             return (
-                <NFormItemGi class="form-grid-item" key={id} span={span} label={label}>
-                    <Child />
+                <NFormItemGi
+                    class="form-grid-item"
+                    key={id}
+                    span={span}
+                    label={label}
+                    path={propertyName}
+                >
+                    <Child v-model={formData.value[propertyName]} />
                 </NFormItemGi>
             )
         }
@@ -41,7 +52,7 @@ export default {
         })
 
         return () => (
-            <NForm>
+            <NForm model={formData.value}>
                 <NGrid class={name === 'WorkSpace' ? 'form-grid' : ''} ref={grid}>
                     {elements.map(renderFormItem)}
                 </NGrid>
