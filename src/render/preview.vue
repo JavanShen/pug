@@ -26,7 +26,7 @@ export default {
 
             formData.value[propertyName] = ref(null)
 
-            const Child = JsonToComponent({ ...another })
+            const Child = JsonToComponent(another)
             return (
                 <NFormItemGi
                     class="form-grid-item"
