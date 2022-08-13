@@ -6,7 +6,7 @@ export default function initSortable({ el, config, emits, name }) {
         ghostClass: 'ghost',
         ...config,
         onEnd: evt => {
-            if (name === 'WidgetList' && evt.from !== evt.to) {
+            if (name === 'WidgetList' && !evt.from.isEqualNode(evt.to)) {
                 evt.item.parentNode.removeChild(evt.item)
             }
         },
@@ -14,8 +14,8 @@ export default function initSortable({ el, config, emits, name }) {
             emits('put', evt.newIndex, evt.oldIndex)
         },
         onSort: evt => {
-            if (evt.form === evt.to) {
-                emits('sort', evt)
+            if (evt.from.isEqualNode(evt.to)) {
+                emits('sort', evt.newIndex, evt.oldIndex)
             }
         }
     })
