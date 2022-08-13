@@ -6,7 +6,7 @@
                 <WidgetList />
             </n-layout-sider>
             <n-layout-content class="content" content-style="padding: 24px;">
-                <WorkSpace :config="config" @change="addWidget" />
+                <WorkSpace :config="config" @change="addWidget" @sort="sortWidget" />
             </n-layout-content>
             <n-layout-sider class="right" content-style="padding: 24px;">
                 <RightPanel :componentOptions="config.elements[activeIndex]" />
@@ -44,6 +44,11 @@ const addWidget = (to, from, widget) => {
         ...componentsOption[tag]
     })
     activeIndex.value = to
+}
+
+const sortWidget = (to, from) => {
+    const [ele] = config.value.elements.splice(from, 1)
+    config.value.elements.splice(to, 0, ele)
 }
 </script>
 

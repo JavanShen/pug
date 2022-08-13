@@ -1,5 +1,5 @@
 <template>
-    <Preview class="work-space" @put="handelPut" :overview="finalConfig" />
+    <Preview class="work-space" @put="handelPut" @sort="handelSort" :overview="finalConfig" />
 </template>
 
 <script setup>
@@ -11,7 +11,7 @@ const prop = defineProps({
     config: Object
 })
 
-const emit = defineEmits(['change'])
+const emit = defineEmits(['change', 'sort'])
 
 const { config } = toRefs(prop)
 
@@ -30,6 +30,10 @@ const finalConfig = computed(() => {
 const handelPut = (to, from) => {
     const widget = widgets[from]
     emit('change', to, from, widget)
+}
+
+const handelSort = (...arg) => {
+    emit('sort', ...arg)
 }
 </script>
 
