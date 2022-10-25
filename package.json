@@ -1,109 +1,57 @@
 {
-  "name": "form-generator",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "npm run lint:eslint",
-    "lint:eslint": "vue-cli-service lint --no-fix"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "lodash": "^4.17.21",
-    "sortablejs": "^1.15.0",
-    "vue": "^3.0.0",
-    "vuedraggable": "^4.1.0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.15",
-    "@vue/cli-plugin-unit-jest": "^5.0.8",
-    "@vue/cli-service": "~4.5.15",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-airbnb": "^5.0.2",
-    "@vue/test-utils": "^2.0.0-0",
-    "@vue/vue3-jest": "^27.0.0-alpha.1",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^27.0.6",
-    "babel-plugin-require-context-hook": "^1.0.0",
-    "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.8.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^9.2.0",
-    "jest": "^27.0.5",
-    "lint-staged": "^9.5.0",
-    "naive-ui": "^2.30.8",
-    "prettier": "2.7.1",
-    "stylelint": "^14.9.1",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^26.0.0",
-    "svg-sprite-loader": "^6.0.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
+    "name": "pug",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "lint": "npm run lint:eslint",
+        "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --no-fix",
+        "lint-staged": "lint-staged",
+        "prepare": "husky install"
     },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "@vue/airbnb",
-      "plugin:prettier/recommended"
+    "dependencies": {
+        "core-js": "^3.26.0",
+        "lodash": "^4.17.21",
+        "sortablejs": "^1.15.0",
+        "vue": "^3.2.41",
+        "vuedraggable": "^4.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.19.6",
+        "@babel/eslint-parser": "^7.19.1",
+        "@vitejs/plugin-vue": "^3.1.2",
+        "@vue/compiler-sfc": "^3.2.41",
+        "@vue/eslint-config-airbnb": "^7.0.0",
+        "@vue/test-utils": "^2.2.0",
+        "@vue/vue3-jest": "^27.0.0",
+        "babel-jest": "^27.5.1",
+        "babel-plugin-require-context-hook": "^1.0.0",
+        "eslint": "^8.2.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-prettier": "^3.4.1",
+        "eslint-plugin-vue": "^9.6.0",
+        "husky": "^8.0.1",
+        "jest": "^27.5.1",
+        "lint-staged": "^9.5.0",
+        "naive-ui": "^2.33.5",
+        "prettier": "2.7.1",
+        "stylelint": "^14.14.0",
+        "stylelint-config-prettier": "^9.0.3",
+        "stylelint-config-standard": "^26.0.0",
+        "svg-sprite-loader": "^6.0.11",
+        "typescript": "^4.8.4",
+        "vite": "^3.1.8",
+        "vue-tsc": "^0.40.13"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
     ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": true
-        }
-      ],
-      "vue/multi-word-component-names": 0,
-      "no-restricted-syntax": [
-        "error",
-        {
-          "selector": "ForInStatement",
-          "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
-        },
-        {
-          "selector": "LabeledStatement",
-          "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
-        },
-        {
-          "selector": "WithStatement",
-          "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
-        }
-      ]
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint",
-      "prettier --write",
-      "git add"
-    ]
-  }
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,vue}": [
+            "prettier --write",
+            "eslint"
+        ]
+    }
 }
