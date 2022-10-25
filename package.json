@@ -1,5 +1,5 @@
 {
-    "name": "form-generator",
+    "name": "pug",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -20,12 +20,12 @@
     },
     "devDependencies": {
         "@babel/core": "^7.19.6",
+        "@babel/eslint-parser": "^7.19.1",
         "@vitejs/plugin-vue": "^3.1.2",
         "@vue/compiler-sfc": "^3.2.41",
         "@vue/eslint-config-airbnb": "^7.0.0",
         "@vue/test-utils": "^2.2.0",
         "@vue/vue3-jest": "^27.0.0",
-        "babel-eslint": "^10.1.0",
         "babel-jest": "^27.5.1",
         "babel-plugin-require-context-hook": "^1.0.0",
         "eslint": "^8.2.0",
