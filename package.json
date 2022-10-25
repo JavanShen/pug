@@ -1,60 +1,60 @@
 {
-  "name": "form-generator",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "npm run lint:eslint",
-    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --no-fix",
-    "lint-staged": "lint-staged",
-    "prepare": "husky install"
-  },
-  "dependencies": {
-    "core-js": "^3.26.0",
-    "lodash": "^4.17.21",
-    "sortablejs": "^1.15.0",
-    "vue": "^3.2.41",
-    "vuedraggable": "^4.1.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.19.6",
-    "@vitejs/plugin-vue": "^3.1.2",
-    "@vue/compiler-sfc": "^3.2.41",
-    "@vue/eslint-config-airbnb": "^7.0.0",
-    "@vue/test-utils": "^2.2.0",
-    "@vue/vue3-jest": "^27.0.0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^27.5.1",
-    "babel-plugin-require-context-hook": "^1.0.0",
-    "eslint": "^8.2.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^3.4.1",
-    "eslint-plugin-vue": "^9.6.0",
-    "husky": "^8.0.1",
-    "jest": "^27.5.1",
-    "lint-staged": "^9.5.0",
-    "naive-ui": "^2.33.5",
-    "prettier": "2.7.1",
-    "stylelint": "^14.14.0",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^26.0.0",
-    "svg-sprite-loader": "^6.0.11",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.8",
-    "vue-tsc": "^0.40.13"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "prettier --write",
-      "eslint"
-    ]
-  }
+    "name": "form-generator",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "test:unit": "vue-cli-service test:unit",
+        "lint": "npm run lint:eslint",
+        "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --no-fix",
+        "lint-staged": "lint-staged",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "core-js": "^3.26.0",
+        "lodash": "^4.17.21",
+        "sortablejs": "^1.15.0",
+        "vue": "^3.2.41",
+        "vuedraggable": "^4.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.19.6",
+        "@vitejs/plugin-vue": "^3.1.2",
+        "@vue/compiler-sfc": "^3.2.41",
+        "@vue/eslint-config-airbnb": "^7.0.0",
+        "@vue/test-utils": "^2.2.0",
+        "@vue/vue3-jest": "^27.0.0",
+        "babel-eslint": "^10.1.0",
+        "babel-jest": "^27.5.1",
+        "babel-plugin-require-context-hook": "^1.0.0",
+        "eslint": "^8.2.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-prettier": "^3.4.1",
+        "eslint-plugin-vue": "^9.6.0",
+        "husky": "^8.0.1",
+        "jest": "^27.5.1",
+        "lint-staged": "^9.5.0",
+        "naive-ui": "^2.33.5",
+        "prettier": "2.7.1",
+        "stylelint": "^14.14.0",
+        "stylelint-config-prettier": "^9.0.3",
+        "stylelint-config-standard": "^26.0.0",
+        "svg-sprite-loader": "^6.0.11",
+        "typescript": "^4.8.4",
+        "vite": "^3.1.8",
+        "vue-tsc": "^0.40.13"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ],
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,vue}": [
+            "prettier --write",
+            "eslint"
+        ]
+    }
 }
