@@ -3,9 +3,6 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "test:unit": "vue-cli-service test:unit",
         "lint": "npm run lint:eslint",
         "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --no-fix",
         "lint-staged": "lint-staged",
